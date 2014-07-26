@@ -1,0 +1,29 @@
+<html>
+    <body>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone.js"></script>
+        <script src="dist/backbone-roger.js"></script>
+
+        <button onClick="notifications.save({count: 0})">Mark as read</button>
+        <button onClick="notifications.save({count: 1})">Add notification</button>
+        <div id="count"></div>
+        <script>
+            var Notifications = Backbone.Model.extend();
+            var notifications = new Notifications();
+            notifications.sync = BackboneRoger('notifications');
+
+            var CountView = Backbone.View.extend({
+                initialize: function () {
+                    this.listenTo(this.model, 'change', this.render);
+                },
+                render: function () {
+                    this.$el.html('Notifications: ' + this.model.get('count'));
+                }
+            });
+            new CountView({el: '#count', model: notifications});
+
+            notifications.fetch();
+        </script>
+    </body>
+</html>
