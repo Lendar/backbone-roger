@@ -1,0 +1,23 @@
+{
+  "name": "backbone-roger",
+  "version": "0.0.0",
+  "description": "Instantly sync browser tabs using LocalStorage + Storage Events",
+  "main": "backbone-roger.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Lendar/backbone-roger.git"
+  },
+  "keywords": [
+    "backbone",
+    "localstorage",
+    "local",
+    "storage",
+    "events",
+    "sync",
+    "browser"
+  ],
+  "author": "Denis Elistratov <xeldim@gmail.com>",
+  "license": "MIT"
+}
