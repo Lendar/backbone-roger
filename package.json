@@ -4,7 +4,10 @@
   "description": "Instantly sync browser tabs using LocalStorage + Storage Events",
   "main": "backbone-roger.js",
   "dependencies": {},
-  "devDependencies": {},
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "webpack": "^1.3.2"
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/Lendar/backbone-roger.git"
