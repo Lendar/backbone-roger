@@ -1,4 +1,5 @@
 module.exports = function (grunt) {
+    var webpack = require('webpack');
     grunt.loadNpmTasks('grunt-open');
     grunt.loadNpmTasks('grunt-webpack');
     grunt.initConfig({
@@ -10,6 +11,17 @@ module.exports = function (grunt) {
                     libraryTarget: 'umd',
                     path: 'dist/'
                 }
+            },
+            dist_min: {
+                entry: './backbone-roger.js',
+                output: {
+                    filename: 'backbone-roger.min.js',
+                    libraryTarget: 'umd',
+                    path: 'dist/'
+                },
+                plugins: [
+                    new webpack.optimize.UglifyJsPlugin()
+                ]
             }
         },
         open: {
@@ -33,6 +45,7 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.registerTask('default', ['webpack:dist']);
+    grunt.registerTask('default', ['build']);
+    grunt.registerTask('build', ['webpack:dist', 'webpack:dist_min']);
     grunt.registerTask('serve', ['open:dev', 'webpack-dev-server']);
 };
